@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-    Vector3 distanceFromPlayer;
-    GameObject player;
+    private Vector3 distanceFromPlayer;
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {

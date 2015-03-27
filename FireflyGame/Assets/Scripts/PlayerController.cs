@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float walkingForce;
 
+    [SerializeField]
+    private float rotateSpeed;
+
     //[SerializeField]
     //private float doubleTapTime;
 
@@ -55,7 +58,13 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate()
     {
         float z_axis = Input.GetAxis("Vertical");
-        //float x_axis = Input.GetAxis("Horizontal");
+        float x_axis = Input.GetAxis("Horizontal");
+
+        if (x_axis != 0)
+        {
+            Vector3 rotation = new Vector3(0, x_axis * rotateSpeed * Time.fixedDeltaTime, 0);
+            gameObject.transform.Rotate(rotation);
+        }
 
         if (z_axis != 0) {
 
@@ -72,10 +81,12 @@ public class PlayerController : MonoBehaviour {
                 gameObject.GetComponent<Rigidbody>().AddForce(movementZ);
                 //gameObject.transform.position = gameObject.transform.position.x.
                 animator.SetBool("walk", true);
+                animator.SetBool("run", false);
             }
             else if (z_axis >= 0.5)
             {
                 animator.SetBool("run", true);
+                animator.SetBool("walk", false);
             }
                 
         }
