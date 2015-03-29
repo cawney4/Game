@@ -2,6 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
     [SerializeField]
